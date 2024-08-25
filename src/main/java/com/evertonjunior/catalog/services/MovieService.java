@@ -26,7 +26,7 @@ public class MovieService {
 	}
 
 	public Movie insert(Movie movie) {
-		return repository.insert(movie);
+		return repository.save(movie);
 	}
 
 	public void deleteById(String id) {

@@ -26,7 +26,7 @@ public class ReviewService {
 	}
 
 	public Review insert(Review review) {
-		return repository.insert(review);
+		return repository.save(review);
 	}
 
 	public void deleteById(String id) {

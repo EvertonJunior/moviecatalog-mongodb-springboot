@@ -60,7 +60,7 @@ public class UserResource {
 		return ResponseEntity.ok().body(user);
 	}
 
-	@GetMapping(value = "/{id}/preferences")
+	@GetMapping(value = "/preferences/{id}")
 	public ResponseEntity<List<Movie>> findByMoviePreference(@PathVariable String id) {
 		return ResponseEntity.ok().body(service.findByMoviePreference(id));
 	}

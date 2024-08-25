@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -51,11 +50,10 @@ public class MovieResource {
 		return ResponseEntity.noContent().build();
 	}
 
-	@GetMapping("/genresearch")
-	public ResponseEntity<List<MovieDTO>> findByGenre(@RequestParam(value = ("text"), defaultValue = "") String genre) {
+	@GetMapping("/genre/{genre}")
+	public ResponseEntity<List<MovieDTO>> findByGenre(@PathVariable String genre) {
 		genre = URL.decodeParam(genre);
-		List<MovieDTO> movieDto = service.findByGenre(genre).stream().map(x -> new MovieDTO(x))
-				.collect(Collectors.toList());
+		List<MovieDTO> movieDto = service.findByGenre(genre).stream().map(x -> new MovieDTO(x)).toList();
 		return ResponseEntity.ok().body(movieDto);
 	}
 }

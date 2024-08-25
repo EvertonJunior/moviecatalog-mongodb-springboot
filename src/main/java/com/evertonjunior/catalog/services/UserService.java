@@ -32,7 +32,7 @@ public class UserService {
 	}
 
 	public User insert(User user) {
-		return repository.insert(user);
+		return repository.save(user);
 	}
 
 	public void deleteById(String id) {
@@ -56,7 +56,6 @@ public class UserService {
 		List<Movie> movies = movieRepository.findAll().stream().filter(filme -> preferences.contains(filme.getGenre()))
 				.collect(Collectors.toList());
 		return movies;
-
 	}
 
 }
